@@ -4,9 +4,9 @@
 // @namespace       https://github.com/puhitaku/aburazaru
 // @description     Download files from GOWIN without login
 // @include         https://www.gowinsemi.com/*
-// @require            https://openuserjs.org/src/libs/sizzle/GM_config.js
-// @grant              GM_getValue
-// @grant              GM_setValue
+// @require         https://openuserjs.org/src/libs/sizzle/GM_config.js
+// @grant           GM_getValue
+// @grant           GM_setValue
 // ==/UserScript==
 
 /* globals GM_config */
