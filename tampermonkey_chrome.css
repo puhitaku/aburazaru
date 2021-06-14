@@ -1,0 +1,12 @@
+/* Custom CSS to fix issues on Chrome and Chromium-based browsers */
+
+/* Fix font */
+.CodeMirror pre.CodeMirror-line, .CodeMirror pre.CodeMirror-line-like {
+  font-family: "JetBrains Mono", "Menlo", "Cascadia Code", "Consolas" !important;
+  font-size: 0.8em;
+}
+
+.cm-fat-cursor div.CodeMirror-cursors {
+  z-index: 999;
+}
+
