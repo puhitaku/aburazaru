@@ -21,8 +21,7 @@
   }
 
   // Define the config dialog
-  GM_config.init(
-  {
+  GM_config.init({
     'id': 'SGConfig',
     'title': 'Smooth GOWIN',
     'fields': {
@@ -61,10 +60,10 @@
         border-top-right-radius: 5px;
         line-height: 30px;
         text-align: center;
-        ">
-          <span style=" vertical-align: middle; color: #fff;">
-            Configure Smooth GOWIN
-          </span>
+      ">
+        <span style=" vertical-align: middle; color: #fff;">
+          Configure Smooth GOWIN
+        </span>
       </div>
     </a>
   `);
