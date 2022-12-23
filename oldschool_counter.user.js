@@ -106,8 +106,6 @@ SUVORK5CYII=
       const cw = dwCanvas * adjustedDigits * 2;
       const ch = dhCanvas * 2;
 
-      console.log(impressions, impressionsDigits);
-
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       canvas.style = `width: ${cw/2}px; height: ${ch/2}px; border-width: 4px; border-style: ridge;`;
