@@ -96,7 +96,7 @@ SUVORK5CYII=
         multiplier = 100000000;
       }
 
-      const impressions = parseFloat(impStr) * multiplier;
+      const impressions = parseInt(parseFloat(impStr) * multiplier);
       let adjustedDigits = Math.max(digits, impressions.toString().length);
       if (adjustedDigits % 2 === 1) {
         adjustedDigits += 1;
