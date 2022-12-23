@@ -55,7 +55,7 @@ xrZ5x2d+WPP8MP/42sr70NOcogRglTQ4AFZp6HCxDwBWcABocACgwQFAy/4FGJK87ggxbrAAAAAA
 SUVORK5CYII=
 `
 
-  let digits = 8;
+  let digits = 6;
 
   const dw = 44;
   const dh = 64;
@@ -93,14 +93,13 @@ SUVORK5CYII=
       }
 
       const impressions = parseFloat(impStr) * multiplier;
-
-      if (impressions > 10000000) {
-        // Activate Elon mode
-        digits = 10;
+      let adjustedDigits = Math.max(digits, impressions.toString().length);
+      if (adjustedDigits % 2 === 1) {
+        adjustedDigits += 1;
       }
 
-      const impressionsDigits = impressions.toString().padStart(digits, '0');
-      const cw = dwCanvas * digits * 2;
+      const impressionsDigits = impressions.toString().padStart(adjustedDigits, '0');
+      const cw = dwCanvas * adjustedDigits * 2;
       const ch = dhCanvas * 2;
 
       console.log(impressions, impressionsDigits);
