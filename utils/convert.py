@@ -19,6 +19,8 @@ with open(path, 'rb') as f:
             print(f'data:image/png;base64,{b64.decode()}')
         case [*_, 'gif']:
             print(f'data:image/gif;base64,{b64.decode()}')
+        case [*_, 'webp']:
+            print(f'data:image/webp;base64,{b64.decode()}')
         case [*_, e]:
             print(f'Unknown extension: {e}', file=sys.stderr)
 
