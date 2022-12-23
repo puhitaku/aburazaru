@@ -64,7 +64,11 @@ SUVORK5CYII=
   const dhCanvas = 24;
 
   let fn = () => {
-    let e = document.querySelectorAll('a[aria-label$="表示。ツイートアナリティクスを表示"]');
+    let ja = document.querySelectorAll('a[aria-label$="表示。ツイートアナリティクスを表示"]');
+    let en = document.querySelectorAll('a[aria-label$="Views. View Tweet analytics"]');
+    let zh = document.querySelectorAll('a[aria-label$="查看推文分析"]');
+
+    let e = new Set([...ja, ...en, ...zh]);
     if (e.length === 0) {
       console.log('not found');
       return;
@@ -86,7 +90,7 @@ SUVORK5CYII=
         multiplier = 1000000;
       } else if (impStr.endsWith('B')) {
         multiplier = 1000000000;
-      } else if (impStr.endsWith('万')) {
+      } else if (impStr.endsWith('万') || impStr.endsWith('萬')) {
         multiplier = 10000;
       } else if (impStr.endsWith('億') || impStr.endsWith('亿')) {
         multiplier = 100000000;
