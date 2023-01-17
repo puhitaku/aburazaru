@@ -108,7 +108,7 @@ SUVORK5CYII=
 
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      canvas.style = `width: ${cw/2}px; height: ${ch/2}px; border-width: 4px; border-style: ridge;`;
+      canvas.style = `width: ${cw/2}px; height: ${ch/2}px; border-width: 4px; border-style: ridge; border-color: white`;
       canvas.width = cw;
       canvas.height = ch;
       e.appendChild(canvas);
