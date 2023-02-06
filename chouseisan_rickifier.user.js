@@ -3,7 +3,7 @@
 // @version      1.0.0
 // @namespace    https://github.com/puhitaku/aburazaru
 // @description  Rickify Chouseisan Characters
-// @include      https://chouseisan.com/s?*
+// @match        https://chouseisan.com/s?*
 // ==/UserScript==
 
 (function() {

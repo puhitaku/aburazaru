@@ -3,8 +3,7 @@
 // @version      1.0.0
 // @namespace    https://github.com/puhitaku/aburazaru
 // @description  Rickroll Any Video/Image
-// @include      http://*/*
-// @include      https://*/*
+// @match        *://*/*
 // ==/UserScript==
 
 (function() {

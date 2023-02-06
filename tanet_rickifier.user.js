@@ -3,7 +3,7 @@
 // @version      1.0.0
 // @namespace    https://github.com/puhitaku/aburazaru
 // @description  Rickify Takehara Cable Network "Tanet"
-// @include      https://www.tanet.co.jp/index.php
+// @match        https://www.tanet.co.jp/index.php
 // ==/UserScript==
 
 (function() {
