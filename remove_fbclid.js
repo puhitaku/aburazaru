@@ -7,7 +7,7 @@
 // ==/UserScript==
 
 (function() {
-  let url = new URL(window.location);
+  let url = new URL(window.location.href.replaceAll('%', '__GM_PERCENT__'));
   url.searchParams.delete('fbclid');
-  window.history.pushState({}, '', url.toString());
+  window.history.pushState({}, "", url.toString().replaceAll('__GM_PERCENT__', '%'));
 })();
