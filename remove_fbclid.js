@@ -7,6 +7,11 @@
 // ==/UserScript==
 
 (function() {
+  // Cancel in iframe
+  if (window.self !== window.top) {
+    return;
+  }
+
   let url = new URL(window.location.href.replaceAll('%', '__GM_PERCENT__'));
   url.searchParams.delete('fbclid');
   window.history.pushState({}, '', url.toString().replaceAll('__GM_PERCENT__', '%'));
