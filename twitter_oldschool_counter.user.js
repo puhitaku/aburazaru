@@ -64,9 +64,9 @@ SUVORK5CYII=
   const dhCanvas = 24;
 
   let fn = () => {
-    let ja = document.querySelectorAll('a[aria-label$="表示。ツイートアナリティクスを表示"]');
-    let en = document.querySelectorAll('a[aria-label$="Views. View Tweet analytics"]');
-    let zh = document.querySelectorAll('a[aria-label$="查看推文分析"]');
+    let ja = document.querySelectorAll('a[aria-label$="。ポストアナリティクスを表示"]');
+    let en = document.querySelectorAll('a[aria-label$=". View post analytics"]');
+    let zh = document.querySelectorAll('a[aria-label$="。查看帖子分析"]');
 
     let e = new Set([...ja, ...en, ...zh]);
     if (e.length === 0) {
