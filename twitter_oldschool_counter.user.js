@@ -4,6 +4,7 @@
 // @namespace    https://github.com/puhitaku/aburazaru
 // @description  Go back to 2000s
 // @match        https://twitter.com/*
+// @match        https://tweetdeck.twitter.com/*
 // ==/UserScript==
 
 (function() {
@@ -55,7 +56,9 @@ xrZ5x2d+WPP8MP/42sr70NOcogRglTQ4AFZp6HCxDwBWcABocACgwQFAy/4FGJK87ggxbrAAAAAA
 SUVORK5CYII=
 `
 
-  let digits = 6;
+  const isTweetDeck = document.location.host.startsWith('tweetdeck');
+
+  let digits = isTweetDeck ? 4 : 6;
 
   const dw = 44;
   const dh = 64;
@@ -75,40 +78,58 @@ SUVORK5CYII=
     }
 
     e.forEach(e => {
-      if (e.getAttribute('replaced') === 'yes') {
+      const label = e.getAttribute('aria-label');
+      if (e.getAttribute('last-label') === label) {
         return;
       }
-      e.setAttribute('replaced', 'yes');
-      const impStr = e.textContent.replace(',', '');
+      e.setAttribute('last-label', label);
       e.removeChild(e.firstChild);
 
-      let multiplier = 1;
-
-      if (impStr.endsWith('K')) {
-        multiplier = 1000;
-      } else if (impStr.endsWith('M')) {
-        multiplier = 1000000;
-      } else if (impStr.endsWith('B')) {
-        multiplier = 1000000000;
-      } else if (impStr.endsWith('万') || impStr.endsWith('萬')) {
-        multiplier = 10000;
-      } else if (impStr.endsWith('億') || impStr.endsWith('亿')) {
-        multiplier = 100000000;
+      const impressions = parseInt(e.getAttribute('aria-label'));
+      let adjustedDigits = Math.max(digits, impressions.toString().length);
+      if (adjustedDigits <= 5) {
+        if (adjustedDigits % 2 === 1) {
+          adjustedDigits += 1;
+        }
       }
 
-      const impressions = parseInt(parseFloat(impStr) * multiplier);
-      let adjustedDigits = Math.max(digits, impressions.toString().length);
-      if (adjustedDigits % 2 === 1) {
-        adjustedDigits += 1;
+      // Extend the space for posts that earned many impressions
+      if (isTweetDeck && adjustedDigits >= 6) {
+        // Remove the share button
+        const share = e.parentElement.nextSibling;
+        if (share.firstChild !== null) {
+          share.removeChild(share.firstChild);
+        }
+
+        // Extend the container to the right
+        let container = e.parentElement.parentElement.parentElement;
+        container.setAttribute('style', 'margin-right: -6px');
+
+        // Remove the number of replies
+        let replies = e.parentElement.parentElement.firstChild;
+        while (replies.lastElementChild !== null) {
+          replies = replies.lastElementChild;
+        }
+        replies.innerText = '';
       }
 
       const impressionsDigits = impressions.toString().padStart(adjustedDigits, '0');
       const cw = dwCanvas * adjustedDigits * 2;
       const ch = dhCanvas * 2;
 
+      let actualWidth = cw / 2;
+      let actualHeight = ch / 2;
+      let borderWidth = 4;
+
+      if (isTweetDeck) {
+        actualWidth = actualWidth * (16 / actualHeight);
+        actualHeight = 16;
+        borderWidth = 2;
+      }
+
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      canvas.style = `width: ${cw/2}px; height: ${ch/2}px; border-width: 4px; border-style: ridge; border-color: white`;
+      canvas.style = `width: ${actualWidth}px; height: ${actualHeight}px; border-width: ${borderWidth}px; border-style: ridge; border-color: white`;
       canvas.width = cw;
       canvas.height = ch;
       e.appendChild(canvas);
