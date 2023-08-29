@@ -83,7 +83,6 @@ SUVORK5CYII=
         return;
       }
       e.setAttribute('last-label', label);
-      e.removeChild(e.firstChild);
 
       const impressions = parseInt(e.getAttribute('aria-label'));
       let adjustedDigits = Math.max(digits, impressions.toString().length);
@@ -132,7 +131,6 @@ SUVORK5CYII=
       canvas.style = `width: ${actualWidth}px; height: ${actualHeight}px; border-width: ${borderWidth}px; border-style: ridge; border-color: white`;
       canvas.width = cw;
       canvas.height = ch;
-      e.appendChild(canvas);
 
       const sprite = new Image();
       sprite.src = spriteBase64;
@@ -145,6 +143,9 @@ SUVORK5CYII=
         Array.from(impressionsDigits).forEach((d, i) => {
           ctx.drawImage(sprite, dw * parseInt(d), 0, dw, dh, dwCanvas * i * 2, 0, dwCanvas * 2, dhCanvas * 2);
         });
+
+        e.removeChild(e.firstChild);
+        e.appendChild(canvas);
       }
     });
   }
