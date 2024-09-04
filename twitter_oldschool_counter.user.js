@@ -3,7 +3,7 @@
 // @version      1.0.0
 // @namespace    https://github.com/puhitaku/aburazaru
 // @description  Go back to 2000s
-// @match        https://twitter.com/*
+// @match        https://x.com/*
 // @match        https://tweetdeck.twitter.com/*
 // ==/UserScript==
 
